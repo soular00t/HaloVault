@@ -1,0 +1,36 @@
+ <?php include_once "../core.php";
+$mediaXML = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.reddit.com%2Fr%2FHaloOnline%2Fsearch.rss%3Fq%3Dflair%3AMedia%26sort%3Dnew%26restrict_sr%3Don%26feature%3Dlegacy_search";
+$mediaJson = "https://www.reddit.com/r/HaloOnline/search.json?q=flair%3Amedia&sort=new&restrict_sr=on&t=month";
+$forgeXML = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.reddit.com%2Fr%2FHaloOnline%2Fsearch.rss%3Fq%3Dflair%3AForge%26sort%3Dnew%26restrict_sr%3Don%26feature%3Dlegacy_search";
+$creationsXML = "https://api.rss2json.com/v1/api.json?rss_url=https%3A%2F%2Fwww.reddit.com%2Fr%2FHaloOnline%2Fsearch.rss%3Fq%3Dflair%3ACreations%26sort%3Dnew%26restrict_sr%3Don%26feature%3Dlegacy_search";
+if (isset($_GET['media'])) {
+	header('Content-type: application/json'); header("Access-Control-Allow-Origin: *");
+	$jsonGrab = file_get_contents($mediaJson);
+	$outpt = str_replace('\\/', '/', $jsonGrab);
+	$output = indent($outpt);
+	$output = str_replace('\\"', "'", $output);
+	print_r($output);
+} elseif (isset($_GET['forge'])) {
+	header('Content-type: application/json'); header("Access-Control-Allow-Origin: *");
+	$jsonGrab = get_url($forgeXML);
+	$outpt = str_replace('\\/', '/', $jsonGrab);
+	$output = indent($outpt);
+	$output = str_replace('\\"', "'", $output);
+	print_r($output);
+} elseif (isset($_GET['creations'])) {
+	header('Content-type: application/json'); header("Access-Control-Allow-Origin: *");
+	$jsonGrab = get_url($creationsXML);
+	$outpt = str_replace('\\/', '/', $jsonGrab);
+	$output = indent($outpt);
+	$output = str_replace('\\"', "'", $output);
+	print_r($output);
+} elseif (isset($_GET['proper'])) {
+	header('Content-type: application/json'); header("Access-Control-Allow-Origin: *");
+	$getMedia = get_url($mediaJson);
+	print_r(indent($getMedia));
+} elseif (isset($_GET['phpArray'])) {
+	$getMedia = get_url($mediaJson);
+	$media = json_decode($getMedia, true);
+	highlight_string("<?php\n\$data =\n" . var_export($media, true) . ";\n?>");
+}
+?>

@@ -1,0 +1,19 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+RewriteRule ^forge$ /forg.e
+RewriteRule ^files$ /files.php
+RewriteRule ^community$ /community.php
+RewriteRule ^users$ /users.php
+
+RewriteRule ^u/(.*)$ ./users.php?id=$1
+RewriteRule ^map/(.*)$ ./forge.php?id=$1
+RewriteRule ^topic/(.*)$ ./community.php?id=$1
+RewriteRule ^file/(.*)$ ./files.php?id=$1
+
+RewriteRule ^u/edit/(.*)$ ./users.php?edit=$1
+RewriteRule ^map/edit/(.*)$ ./forge.php?mod=$1
+RewriteRule ^topic/edit/(.*)$ ./community.php?change=$1
+RewriteRule ^file/edit/(.*)$ ./files.php?change=$1

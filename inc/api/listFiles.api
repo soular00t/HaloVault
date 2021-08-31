@@ -1,0 +1,121 @@
+<?php header('Content-type: application/json; charset=utf8'); header("Access-Control-Allow-Origin: *");
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+require_once "../core.php"; error_reporting(E_ALL & ~E_NOTICE);
+$filter = ''; $and = ''; $WHERE .= ""; $LIMIT = ''; $_PAGE[] =''; $ORDER = 'ORDER by `date` DESC'; $oBY = '';
+if (isset($_GET['o']) && $_GET['o'] != 'views') {
+	$oBY = preg_replace('/[^0-9a-zA-Z_-]/', '', $_GET['o']);
+	$ORDER = "ORDER BY `{$oBY}` DESC";
+}
+if (isset($_GET['type']) && !empty($_GET['type'])) {
+	$filter = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $_GET['type']);
+	$WHERE .= " AND `type` = '{$filter}'";
+}
+if ( (isset($_GET['creator']) && !empty($_GET['creator']) ) || (isset($_GET['author']) && !empty($_GET['author'])) ) {
+	$filter = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $_GET['author']);
+	if (!empty($_GET['creator'])) $filter=preg_replace('/[^ \w0-9a-zA-Z_-]/','',$_GET['creator']);
+	$WHERE .= " AND `creator` = '{$filter}'";
+}
+if (isset($_GET['user']) && !empty($_GET['user'])) {
+	$filter = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $_GET['user']);
+	if (!is_numeric($_GET['user'])) {
+		$getuid = $_SQL->query("SELECT id FROM users WHERE `uname` = '{$filter}' OR `alias` = '{$filter}'")->fetch_object();
+		$uid = (int) $getuid->id;
+		$WHERE .= " AND `uid` = '{$uid}'";
+	}else {
+		$uid = (int) $_GET['user'];
+		$WHERE .= " AND `uid` = '{$uid}'";
+	}
+}
+if (isset($_GET['p']) && is_numeric($_GET['p']) && isset($_GET['r']) && is_numeric($_GET['r'])) {
+	$p = (int) $_GET['p'] -1;
+	$r = (int) $_GET['r'];
+	$s = ($p) ?  ($p * $r) : 0;
+	$LIMIT = "LIMIT {$s}, {$r}";
+	$tcount = $_SQL->query("SELECT uid FROM `files` WHERE uid != '' {$WHERE}") or die($_SQL->error); 
+	$total = $tcount->num_rows;
+	$page['totalItems'] = "$total";
+	$page['currentPage'] = "".($p+1)."";
+	$begResult = $s + 1;
+	$endResult = $s + $r; if ($endResult > $total) { $endResult = $total; }
+	$page['results'] = "".$begResult."-".$endResult." out of ".$page['totalItems'];
+	$tc = $_SQL->query("SELECT uid FROM `files` WHERE uid != '' {$WHERE} {$LIMIT}") or die($_SQL->error); 
+	$t = $tc->num_rows;
+	$page['itemsOnPage'] = "$t";
+	if ($page['itemsOnPage'] > 0 && $page['itemsOnPage'] < $r) {$page['pagesPossible'] = $page['currentPage'];}
+	else { $page['pagesPossible'] = "".ceil($total / $r).""; }
+	$_PAGE[] = $page;
+}
+if (!isset($_GET['creator']) && !isset($_GET['user']) && !isset($_GET['type']) && isset($_GET['search']) && preg_match('/^[a-z0-9.\-\_]+$/i', $_GET['search'])) { 
+	$sql = $_SQL->query("SELECT *, NULL as url FROM `files` WHERE `title` LIKE '%{$_GET['search']}%' OR `creator` LIKE '%{$_GET['search']}%' OR `type` LIKE '%{$_GET['search']}%' OR `url` LIKE '%{$_GET['search']}%' AND (uid != '' {$WHERE}) {$ORDER} {$LIMIT}") or die($_SQL->error);	
+	if ($sql->num_rows < 1) { $sql = $_SQL->query("SELECT *, NULL as url FROM `files` where uid != '' {$WHERE} {$ORDER} {$LIMIT}") or die($_SQL->error); }
+} else { $sql = $_SQL->query("SELECT *, NULL as url FROM `files` where uid != '' {$WHERE} {$ORDER} {$LIMIT}") or die($_SQL->error); }
+if (isset ($_GET['o']) && $_GET['o'] == 'views') {
+	$sql = $_SQL->query("SELECT m.*, COUNT(v.id) AS views FROM `files` AS m LEFT JOIN views AS v ON v.mod_id=m.id where uid != '' {$WHERE} GROUP BY m.id ORDER BY views DESC {$LIMIT}") or die($_SQL->error);
+}
+while ($file = $sql->fetch_assoc()) {
+	$submitter = $_SQL->query("SELECT uname FROM users WHERE id = '{$file['uid']}'");
+	$sub = $submitter->fetch_assoc(); $file['submitter'] = $sub['uname'];
+	$file['url'] = "http://haloshare.org/files.php?id=".$file['id'].""; $fileIMG = $file['img'];
+	$fileType = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $file['type']);
+	$fileIMG = $file['img']; if (empty($file['img'])) { $fileIMG = "/css/images/".preg_replace('/\s+/', '', $fileType).".jpg"; }
+	$fileIMG0 = str_replace('/css/', '//haloshare.org/css/', $fileIMG);
+	$fileIMG2 = str_replace('http://haloshare.org//haloshare.org/css/', '//haloshare.org/css/', $fileIMG0);
+	$modimg = "".$_DOMAIN."css/images/file_icons/".$file['type']."/".$_SESSION['theme'].".png";  $file['fileIcon'] = $modimg;
+	$filePub = removeBB($file['info']);
+	$filePub = str_replace('Posted on HaloShare', '', $filePub);
+	$file['cleanInfo'] = nl2br($filePub);
+	$fileI = str_replace("\\\"", '"', $file['info']);
+	$file['info'] = bb_parse(htmlentities($fileI));
+	if ($file['type'] == 'mod') { 
+		$fileQuote = "Usually a tag modification to the game, almost always used with Foundation Mod Manager."; }
+	if ($file['type'] == 'app') { 
+		$fileQuote = "External tools used to modify the game, example would be FMM, and the way it handles mod installation."; }
+	if (stripos($file['type'], 'variant')!==FALSE) { 
+		$fileQuote = "This mainly exists as a way to submit gametypes, or variant packs."; }
+	if ($file['type'] == 'config') { 
+		$fileQuote = "Files used to edit the game, usually useful for console commands through rcon, & used to bind keys."; }
+	if ($file['type'] == 'game') { 
+		$fileQuote = "Entire game download, can be another build of Halo Online or another fork od Dewrito or the like."; }
+	$file['tdr'] = $fileQuote;
+	if (stripos($file['title'],':')!==FALSE) $file['subTitle'] = strtok($file['title'], ':');
+	$fileV = $_SQL->query("SELECT * FROM views WHERE mod_id = '".$file['id']."'");
+	$file['views'] = "$fileV->num_rows";
+	$toRemove = substr($file['title'], 0, strpos($file['title'], ":")).': ';
+	$file['title'] = str_replace($toRemove, '', $file['title']);
+	if (!empty($file['directURL'])) {
+		if (stripos($file['directURL'], "content/variants") == FALSE) {
+			$xtra = json_decode(file_get_contents("http://127.0.0.1/file_details.php?enc&variant={$file['directURL']}"));
+			if ($xtra==null) $file['extraDetails']="http://127.0.0.1/file_details.php?enc&variant={$file['directURL']}";
+			if((isset($_USER['name'])) && ($file['public'] != 'r' || $_USER['group'] > 2)) $file['directURL'] = str_ireplace('//sandbox.map', '/sandbox.map', $dURL);
+		} 
+		else {
+			$xtra = json_decode(file_get_contents("http://127.0.0.1/file_details.php?enc&variant=".base64_encode($file['directURL'])));
+			if ($xtra==null) $file['extraDetails']="http://127.0.0.1/file_details.php?enc&variant=".base64_encode($$file['directURL']);
+			if((isset($_USER['name'])) && ($file['public'] != 'r' || $_USER['group'] > 2)) $file['directURL']="http://dewsha.re/share.php?variant=".$file['directURL'];
+		}
+		if ($xtra) {
+			$file['fileshareData']=$xtra;
+		}
+		$file['directURL'] = "http://dewsha.re/share.php?variant=".$file['id'];
+	}
+	$_FILE[] = $file;
+}
+$pageJson1 = json_encode($_PAGE, JSON_PRETTY_PRINT);
+$pageJsonX = str_replace('"",', '
+"PAGE_RESULTS":', $pageJson1);
+$pageJson2 = str_replace('[
+', '{
+', $pageJsonX);
+$pageJson = str_replace(']', ',', $pageJson2);
+$fileJson1 = json_encode($_FILE, JSON_PRETTY_PRINT);
+$fileJsonX = str_replace("\\/", "/", $fileJson1);
+$fileJson2 = str_replace('tdr', 'typeDesc', $fileJsonX);
+$fileJson = str_replace('"creator":', '"Author":', $fileJson2);
+if (isset($_GET['p']) AND is_numeric($_GET['p']) OR $_FILE['itemsOnPage'] > 0) {
+	print_r("".$pageJson." 
+
+\"FILE_RESULTS\":
+".$fileJson."
+}");
+} else { print_r($fileJson); }
+?>

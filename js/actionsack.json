@@ -1,0 +1,1785 @@
+{
+	"Types":[  
+		{  
+			"displayName":"FFA Stickies",
+			"typename":"FFA Stickiez",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"SnowBox",
+					"mapName":"SnowBox"
+				}
+			]
+		},
+		{  
+			"displayName":"Boom",
+			"typename":"Bomber",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Bomberman*",
+					"mapName":"Bomberman"
+				}
+			]
+		},
+		{  
+			"displayName":"Run For Cover",
+			"typeName":"Run 4 Cover",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Iphicles",
+					"mapName":"Iphicles"
+				},
+				{  
+					"displayName":"NarrowScope",
+					"mapName":"NarrowScope"
+				}
+			]
+		},
+		{  
+			"displayName":"Dodgeball",
+			"typename":"Dodgeball",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"BoomBall",
+					"mapName":"BoomBall v1"
+				}
+			]
+		},
+		{  
+			"displayName":"Derby",
+			"typeName":"Derby",
+			"SprintEnabled": "0",
+			"SpecificMaps":[  
+				{  
+					"displayName":"LavaPit",
+					"mapName":"LavaPit DC"
+				},
+				{  
+					"displayName":"SpaceDerby*",
+					"mapName":"SpaceDerby"
+				},
+				{  
+					"displayName":"Warthog Derby",
+					"mapName":"Warthog Derby"
+				}
+			]
+		},
+		{  
+			"displayName":"PM Tactical",
+			"typeName":"PM Tactical",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Tactical Objective",
+					"mapName":"Tactical Obj"
+				}
+			]
+		},
+		{  
+			"displayName":"Tribes (?)",
+			"typeName":"Tribes (Slayer)",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Ascend",
+					"mapName":"Ascend"
+				}
+			]
+		},
+		{  
+			"displayName":"Tribes (?)",
+			"typeName":"Tribes Ball",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Ascend",
+					"mapName":"Ascend"
+				}
+			]
+		},
+		{  
+			"displayName":"Tribes (?)",
+			"typeName":"Tribes CTF",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Ascend",
+					"mapName":"Ascend"
+				}
+			]
+		},
+		{  
+			"displayName":"Tribes (?)",
+			"typeName":"Tribes-VIP",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Ascend",
+					"mapName":"Ascend"
+				}
+			]
+		},
+		{
+			"displayName": "Airball",
+			"typeName": "Airball",
+			"SprintEnabled": "1",
+			"SpecificMaps": [
+				{
+					"displayName": "Air Ball",
+					"mapName": "Air Ball"
+				}
+			]
+		},
+		{
+			"displayName": "HammerRocketLOL",
+			"typeName": "HammerRocketLOL",
+			"SprintEnabled": "1",
+			"SpecificMaps": [
+				{
+					"displayName": "BounceBox",
+					"mapName": "BounceBox_"
+				}
+			]
+		},
+		{  
+			"displayName":"Joust",
+			"typeName":"JOUST",
+			"SprintEnabled": "1",
+			"SpecificMaps":[  
+				{  
+				   "displayName":"Joust Arena",
+				   "mapName":"Joust Arena"
+				}
+			 ]
+		},
+
+		{
+			"displayName": "Grifball",
+			"typeName": "Grifball",
+			"SprintEnabled": "0",
+			"SpecificMaps": [
+				{
+					"displayName": "WaterCourt*",
+					"mapName": "WaterCourt"
+				},
+				{
+					"displayName": "RiverCourt*",
+					"mapName": "RiverCourt"
+				}
+			]
+		},
+		{
+			"displayName": "Grifball",
+			"typeName": "Grifball XT",
+			"SprintEnabled": "0",
+			"SpecificMaps": [
+				{
+					"displayName": "LongFrigate*",
+					"mapName": "LongFrigate"
+				}
+			]
+		},
+		{
+			"displayName": "Grifball",
+			"typeName": "OG Grifball",
+			"SprintEnabled": "0",
+			"SpecificMaps": [
+				{
+					"displayName": "Grifball-Arena [NEW]",
+					"mapName": "Grifball_Arena"
+				}
+			]
+		},
+		{  
+			"displayName":"SpeedHalo",
+			"typeName":"Speed-Halo",
+			"SprintEnabled":"0",
+			"SpecificMaps":[  
+				{
+					"displayName": "Speed Dome",
+					"mapName": "Speed Dome"
+				}
+			]
+		},
+		{  
+			"displayName":"SpeedHalo",
+			"typeName":"SpeedHaloo",
+			"SprintEnabled":"0",
+			"SpecificMaps":[  
+				{
+					"displayName": "Speed Hallway",
+					"mapName": "SpeedHallway"
+				}
+			]
+		},
+		{  
+			"displayName":"Fiesta-Flag",
+			"typename":"Husky-Raid",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Husky-Dip",
+					"mapName":"Husky-Dip"
+				},
+				{
+					"displayName":"FlatFloorCTF",
+					"mapName":"FlatFloorCTF"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{
+					"displayName":"Gulch STA",
+					"mapName":"Blood Gulch Sta"
+				},
+				{
+					"displayName":"Husky-Classic",
+					"mapName":"Husky-Classic"
+				},
+				{
+					"displayName":"CTF Warm-Up",
+					"mapName":"CTF Warm-Up"
+				},
+				{
+					"displayName":"Facing Worlds",
+					"mapName":"Facing Worlds"
+				}
+			]
+		},
+		{  
+			"displayName":"OneFlag",
+			"typename":"Invasion",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Forerunner Reliques",
+					"mapName":"Forunner Relics"
+				}
+			]
+		},
+		{  
+			"displayName":"Team CTF",
+			"typename":"Team CTF",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Husky-Dip",
+					"mapName":"Husky-Dip"
+				},
+				{
+					"displayName":"FlatFloorCTF",
+					"mapName":"FlatFloorCTF"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{
+					"displayName":"Gulch STA",
+					"mapName":"Blood Gulch Sta"
+				},
+				{
+					"displayName":"Husky-Classic",
+					"mapName":"Husky-Classic"
+				},
+				{
+					"displayName":"Facing Worlds",
+					"mapName":"Facing Worlds"
+				}
+			]
+		},
+		{  
+			"displayName":"Team CTF",
+			"typename":"MLG CTF 5-Flag",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{
+					"displayName":"CTF Warm-Up",
+					"mapName":"CTF Warm-Up"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				}
+			]
+		},
+		{  
+			"displayName":"Fiesta-Flag",
+			"typename":"XT Fiesta CTF",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"XT Standoff [beta]",
+					"mapName":"XT Standoff"
+				},
+				{
+					"displayName":"Pit0ut [beta]",
+					"mapName":"Pit0ut"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA Swords",
+			"typeName":"Swordz",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Sword Arena",
+					"mapName":"ARENA SWORD"
+				},
+				{  
+					"displayName":"Serious Silver",
+					"mapName":"V3 Slayer S"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Sword Badlands",
+					"mapName":"sword badlands"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				},
+				{  
+					"displayName":"Islands",
+					"mapName":"Islands"
+				}
+			]
+		},
+		{  
+			"displayName":"Stab-Out",
+			"typeName":"Stab-Out",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{  
+					"displayName":"WWE Smackdown",
+					"mapName":"WWE Smackdown"
+				},
+				{  
+					"displayName":"Sword Arena",
+					"mapName":"ARENA SWORD"
+				},
+				{  
+					"displayName":"Serious Silver",
+					"mapName":"V3 Slayer S"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Sword Badlands",
+					"mapName":"sword badlands"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				},
+				{  
+					"displayName":"Islands",
+					"mapName":"Islands"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Slayer",
+			"typeName":"Castle Destruct",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Castle Destruction",
+					"mapName":"Castle Destruct"
+				}
+			]
+		},
+		{  
+			"displayName":"OneBomb",
+			"typeName":"SkyFort 1.0",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"SkyFort",
+					"mapName":"Skyfort 2.0"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				}
+			]
+		},
+		{  
+			"displayName":"OneBomb",
+			"typeName":"ODST Siege",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Valhalla Siege",
+					"mapName":"Valhalla Siege"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"Valhalla Defense",
+					"mapName":"ValhallaDefense"
+				},
+				{  
+					"displayName":"D-Day Highground",
+					"mapName":"DDAY HIGHGROUND"
+				},
+				{  
+					"displayName":"HGBaseDefense",
+					"mapName":"HGBaseDefense"
+				}
+			]
+		},
+		{  
+			"displayName":"Shotgun Assault",
+			"typeName":"Shotgun Assault",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Valhalla Siege",
+					"mapName":"Valhalla Siege"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"Valhalla Defense",
+					"mapName":"ValhallaDefense"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"D-Day Highground",
+					"mapName":"DDAY HIGHGROUND"
+				},
+				{  
+					"displayName":"HGBaseDefense",
+					"mapName":"HGBaseDefense"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				}
+			]
+		},
+		{  
+			"displayName":"OneFlag",
+			"typeName":"One Flag+",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Valhalla Siege",
+					"mapName":"Valhalla Siege"
+				},
+				{
+					"displayName":"XT Standoff",
+					"mapName":"XT Standoff"
+				},
+				{  
+					"displayName":"Valhalla Defense",
+					"mapName":"ValhallaDefense"
+				},
+				{  
+					"displayName":"Flag-Heist",
+					"mapName":"Flag-Heist"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA Slayer",
+			"typename":"FFA-NoVehi",
+			"SprintEnabled":"0",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA Slayer",
+			"typeName":"FFA Slayer",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{  
+					"displayName":"Rifle Arena",
+					"mapName":"Rifle Arena"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"LaunchPad",
+					"mapName":"LaunchPad"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA Slayer",
+			"typeName":"Chiron-FFA",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"TeleportMaze",
+					"mapName":"TeleportMaze"
+				},
+				{  
+					"displayName":"Chiron-1234",
+					"mapName":"Chiron-1234"
+				},
+				{  
+					"displayName":"WarpLock",
+					"mapName":"WarpLock"
+				},
+				{  
+					"displayName":"Tellie Wars",
+					"mapName":"TELLIE WARS"
+				},
+				{  
+					"displayName":"Icebox Interior",
+					"mapName":"Icebox Interior"
+				},
+				{ 
+					"displayName":"Rvrwrld Interior",
+					"mapName":"RvrwrldInterior"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Swords",
+			"typeName":"Team Swords",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{  
+					"displayName":"WWE Smackdown",
+					"mapName":"WWE Smackdown"
+				},
+				{  
+					"displayName":"Serious Silver",
+					"mapName":"V3 Slayer S"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"Sword Badlands",
+					"mapName":"sword badlands"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				},
+				{  
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Hammers",
+			"typeName":"Team Hammers",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{  
+					"displayName":"WWE Smackdown",
+					"mapName":"WWE Smackdown"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"Serious Silver",
+					"mapName":"V3 Slayer S"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"Sword Badlands",
+					"mapName":"sword badlands"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Crazy King",
+			"typename":"Team Crazy King",
+			"SprintEnabled":"0",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Forerunner Reliques",
+					"mapName":"KingOfTheRelics"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Crazy King",
+			"typename":"Warkoth",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"WarHalla",
+					"mapName":"Warhalla"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Hammer-Hill",
+			"typename":"Team Hammer Hill",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Soaring Hill",
+					"mapName":"soaring hill"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Islands",
+					"mapName":"Islands"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA Hammer-Hill",
+			"typename":"SoaringHill",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Soaring Hill",
+					"mapName":"soaring hill"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Islands",
+					"mapName":"Islands"
+				}
+			]
+		},
+		{  
+			"displayName":"ClangOfTheHill",
+			"typename":"ClangOfTheHill",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Soaring Hill",
+					"mapName":"soaring hill"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Islands",
+					"mapName":"Islands"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA CrazyKing",
+			"typename":"FFA KoTH",
+			"SprintEnabled":"0",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{
+					"displayName":"Forerunner Reliques",
+					"mapName":"Forunner Relics"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Skull",
+			"typeName":"Team Oneball",
+			"SprintEnabled":"0",
+			"SpecificMaps":[ 
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA OneBall",
+			"typeName":"ffaBall-NoVehi",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA OneBall",
+			"typeName":"FFA Oddball",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Slayer",
+			"typeName":"BRs-NoVehi",
+			"SprintEnabled":"0",
+			"SpecificMaps":[
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Slayer",
+			"typeName":"Team BRs",
+			"SprintEnabled":"0",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{
+					"displayName":"HG Gulch",
+					"mapName":"HG Gulch"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{  
+					"displayName":"Rifle Arena",
+					"mapName":"Rifle Arena"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"LaunchPad",
+					"mapName":"LaunchPad"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				}
+			]
+		},
+		{  
+			"displayName":"Team DMRs",
+			"typeName":"Team DMRs",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Rifle Arena",
+					"mapName":"Rifle Arena"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"LaunchPad",
+					"mapName":"LaunchPad"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA ShottySnipes",
+			"typeName":"Shotty Snipers",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Inferno",
+					"mapName":"Inferno"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Uncaged",
+					"mapName":"UNCAGED 1.8"
+				},
+				{  
+					"displayName":"The Crust",
+					"mapName":"The Crust"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Rifle Arena",
+					"mapName":"Rifle Arena"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Splasers",
+			"typeName":"Team Splasers",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Inferno",
+					"mapName":"Inferno"
+				},
+				{  
+					"displayName":"The Crust",
+					"mapName":"The Crust"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Uncaged",
+					"mapName":"UNCAGED 1.8"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Rifle Arena",
+					"mapName":"Rifle Arena"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA Splockets",
+			"typeName":"Splocketz",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"Inferno",
+					"mapName":"Inferno"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"The Crust",
+					"mapName":"The Crust"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Rifle Arena",
+					"mapName":"Rifle Arena"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Fiesta",
+			"typeName":"Team Fiesta",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"FiestaPit",
+					"mapName":"FiestaPit"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"XT Guardian",
+					"mapName":"XT Guardian"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				},
+				{  
+					"displayName":"LaunchPad",
+					"mapName":"LaunchPad"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"The Crust",
+					"mapName":"The Crust"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Aisle",
+					"mapName":"Aisle"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				}
+			]
+		},
+		{  
+			"displayName":"Fiesta",
+			"typename":"Vehicle Fiesta",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{
+					"displayName":"Vehicle Fiesta",
+					"mapName":"Valhalla VF"
+				}
+			]
+		},
+		{
+			"displayName": "FFA Fiesta",
+			"typeName": "Absolute Chaos",
+			"SprintEnabled": "1",
+			"SpecificMaps": [
+				{
+					"displayName": "DiamondPit",
+					"mapName": "DiamondPit"
+				},
+				{
+					"displayName": "XT Guardian*",
+					"mapName": "XT Guardian"
+				}
+			]
+		},
+		{  
+			"displayName":"FFA Fiesta",
+			"typeName":"FFA Fiesta",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"FiestaPit",
+					"mapName":"FiestaPit"
+				},
+				{  
+					"displayName":"Shipment",
+					"mapName":"Shipment"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Pillar Of Autumn",
+					"mapName":"Pillar0fAutumn"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				},
+				{  
+					"displayName":"LaunchPad",
+					"mapName":"LaunchPad"
+				},
+				{  
+					"displayName":"The Crust",
+					"mapName":"The Crust"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				}
+			]
+		},
+		{  
+			"displayName":"Team SWAT",
+			"typeName":"Team SWAT",
+			"SprintEnabled":"0",
+			"SpecificMaps":[  
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				},
+				{  
+					"displayName":"LaunchPad",
+					"mapName":"LaunchPad"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"The Crust",
+					"mapName":"The Crust"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"Vessel [NEW]",
+					"mapName":"Vessel H3"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				}
+			]
+		},
+		{  
+			"displayName":"Team Shwatguns",
+			"typeName":"Team Shwatguns",
+			"SprintEnabled":"1",
+			"SpecificMaps":[  
+				{  
+					"displayName":"ValHilla",
+					"mapName":"ValHilla"
+				},
+				{  
+					"displayName":"Vector",
+					"mapName":"MLG Vector"
+				},
+				{  
+					"displayName":"The Cage",
+					"mapName":"THE CAGE 6.0"
+				},
+				{  
+					"displayName":"Exile",
+					"mapName":"Exile"
+				},
+				{  
+					"displayName":"Onslaught",
+					"mapName":"MLG Onslaught"
+				},
+				{  
+					"displayName":"Amplified",
+					"mapName":"MLG Amplified"
+				},
+				{  
+					"displayName":"FogWorld*",
+					"mapName":"FogWorld"
+				},
+				{
+					"displayName":"Warlocked",
+					"mapName":"Warlocked"
+				},
+				{  
+					"displayName":"LaunchPad",
+					"mapName":"LaunchPad"
+				},
+				{  
+					"displayName":"Hollow",
+					"mapName":"Hollow"
+				},
+				{
+					"displayName":"Inner-Shell",
+					"mapName":"Inner Shell"
+				},
+				{  
+					"displayName":"The Crust",
+					"mapName":"The Crust"
+				},
+				{  
+					"displayName":"Wewrdian",
+					"mapName":"wewrdian"
+				},
+				{  
+					"displayName":"Foundry",
+					"mapName":"Foundry CPLX09"
+				},
+				{  
+					"displayName":"ReactGulch",
+					"mapName":"ReactGulch"
+				},
+				{  
+					"displayName":"Extra Level",
+					"mapName":"Extra Level"
+				}
+			]
+		}
+	]
+}

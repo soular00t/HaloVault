@@ -1,0 +1,14 @@
+<?php header('Content-type: application/json; charset=utf8'); header("Access-Control-Allow-Origin: *");
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+$context = stream_context_create(array(
+  'http' => array(
+    'method' => 'GET',
+    'header' => "Content-Type: type=application/json\r\n"
+    )
+  )
+);
+if (isset($_GET['name']) || isset($_GET['uid'])) $url = "http://new.halostats.click/api/player?name={$_GET['name']}&uid={$_GET['uid']}";
+else $url='http://new.halostats.click/api/player?name=KrazyKlown77&uid=8e42b4fabdf0b3a5';
+$api = json_decode(file_get_contents($url, false, $context));
+print_r(json_encode($api, JSON_PRETTY_PRINT));
+?>

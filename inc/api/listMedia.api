@@ -1,0 +1,110 @@
+<?php header('Content-type: application/json; charset=utf8'); header("Access-Control-Allow-Origin: *");
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+require_once "../core.php"; error_reporting(E_ALL & ~E_NOTICE);
+$filter = ''; $and = ''; $WHERE = " WHERE `public` != 'n'"; $LIMIT = ''; $_PAGE[] =''; $ORDER = 'ORDER by `posted` DESC'; $oBY = '';
+if (isset($_GET['o']) && $_GET['o'] != 'views') {
+	$oBY = preg_replace('/[^0-9a-zA-Z_-]/', '', $_GET['o']);
+	$ORDER = "ORDER BY `{$oBY}` DESC";
+}
+if (isset($_GET['type']) && !empty($_GET['type'])) {
+	$filter = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $_GET['type']);
+	$filt = str_ireplace('screenshot', 's', $filter);
+	$filt = str_ireplace('video', 'v', $filt);
+	$WHERE .= " AND `type` = '{$filt}'";
+}
+if (isset($_GET['user']) && !empty($_GET['user'])) {
+	$filter = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $_GET['user']);
+	if (!is_numeric($_GET['user'])) {
+		$getuid = $_SQL->query("SELECT id FROM users WHERE `uname` = '{$filter}' OR `alias` = '{$filter}'")->fetch_object();
+		$uid = (int) $getuid->id;
+		$WHERE .= " AND `uid` = '{$uid}'";
+	}else {
+		$uid = (int) $_GET['user'];
+		$WHERE .= " AND `uid` = '{$uid}'";
+	}
+}
+if ( (isset($_GET['creator']) && !empty($_GET['creator']) ) || (isset($_GET['author']) && !empty($_GET['author'])) ) {
+	$filter = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $_GET['author']);
+	if (!empty($_GET['creator'])) $filter=preg_replace('/[^ \w0-9a-zA-Z_-]/','',$_GET['creator']);
+	$WHERE .= " AND `author` = '{$filter}'";
+}
+if (isset($_GET['p']) && is_numeric($_GET['p']) && isset($_GET['r']) && is_numeric($_GET['r'])) {
+	$p = (int) $_GET['p'] -1;
+	$r = (int) $_GET['r'];
+	$s = ($p) ?  ($p * $r) : 0;
+	$LIMIT = "LIMIT {$s}, {$r}";
+	$tcount = $_SQL->query("SELECT uid FROM `media` {$WHERE}") or die($_SQL->error); 
+	$total = $tcount->num_rows;
+	$page['totalItems'] = "$total";
+	$page['currentPage'] = "".($p+1)."";
+	$begResult = $s + 1;
+	$endResult = $s + $r; if ($endResult > $total) { $endResult = $total; }
+	$page['results'] = "".$begResult."-".$endResult." out of ".$page['totalItems'];
+	$tc = $_SQL->query("SELECT uid FROM `media` {$WHERE} {$LIMIT}") or die($_SQL->error); 
+	$t = $tc->num_rows;
+	$page['itemsOnPage'] = "$t";
+	if ($page['itemsOnPage'] > 0 && $page['itemsOnPage'] < $r) {$page['pagesPossible'] = $page['currentPage'];}
+	else { $page['pagesPossible'] = "".ceil($total / $r).""; }
+	$_PAGE[] = $page;
+}
+if (!isset($_GET['author']) && !isset($_GET['uid']) && !isset($_GET['type']) && isset($_GET['search']) && preg_match('/^[a-z0-9.\-\_]+$/i', $_GET['search'])) { 
+	$sql = $_SQL->query("SELECT *, posted AS `date` FROM `media` WHERE `name` LIKE '%{$_GET['search']}%' OR `desc` LIKE '%{$_GET['search']}%' AND (uid != '' {$WHERE}) {$ORDER} {$LIMIT}") or die($_SQL->error);	
+	if ($sql->num_rows < 1) { $sql = $_SQL->query("SELECT `id`,`uid`,`url`,`author`,`type`,`desc` FROM `media` {$WHERE} {$ORDER} {$LIMIT}") or die($_SQL->error); }
+} else { $sql = $_SQL->query("SELECT * FROM `media` {$WHERE} {$ORDER} {$LIMIT}") or die($_SQL->error); }
+if (isset ($_GET['o']) && $_GET['o'] == 'views') {
+	$sql = $_SQL->query("SELECT v.*, COUNT(v.id) AS views FROM `media` AS v LEFT JOIN views AS v ON v.media_id=m.id {$WHERE} GROUP BY v.id ORDER BY views DESC {$LIMIT}") or die($_SQL->error);
+}
+if (isset ($_GET['o']) && $_GET['o'] == 'replies') {
+	$sql = $_SQL->query("SELECT d.*, COUNT(d.id) AS replies FROM `media` AS d LEFT JOIN notifications AS d ON d.media_id=d.id {$WHERE} GROUP BY d.id ORDER BY replies DESC {$LIMIT}") or die($_SQL->error);
+}
+if (isset ($_GET['o']) && $_GET['o'] == 'votes') {
+	$sql = $_SQL->query("SELECT m.*, COUNT(d.id) AS votes FROM `media` AS d LEFT JOIN notifications AS d ON d.media_id=d.id {$WHERE} GROUP BY d.id ORDER BY downloads DESC {$LIMIT}") or die($_SQL->error);
+}
+while ($media = $sql->fetch_assoc()) {
+	$submitter = $_SQL->query("SELECT uname FROM users WHERE id = '{$media['uid']}'");
+	$sub = $submitter->fetch_assoc(); $media['uploader'] = $sub['uname'];
+	$mediaType = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $media['flair']);
+	  if ($media['type'] == 's') $t = "screenshot";
+	  elseif ($media['flair'] == 'v') $t = "video";
+	$media['type'] = $t;
+	$toRemove = substr($media['title'], 0, strpos($media['title'], ":")).': ';
+	$media['desc'] = htmlspecialchars(nl2br($media['desc']));
+	$mediaI = str_replace("\\\"", '"', $media['desc']);
+	$mediaV = $_SQL->query("SELECT id FROM views WHERE media_id = '".$media['id']."'");
+	$mediaVo = $_SQL->query("SELECT id FROM notifications WHERE media_id = '{$media['id']}' AND type= 'vote'");
+	$mediaR = $_SQL->query("SELECT id FROM notifications WHERE media_id = '{$media['id']}' AND type= 'media'");
+	$media['views'] = "$mediaV->num_rows";
+	$media['votes'] = "$mediaVo->num_rows";
+	$media['replies'] = "$mediaR->num_rows";
+	$fsData = json_decode(file_get_contents('http://127.0.0.1/file_details.php?enc&img='.$media['url']), true);
+	$media['fileshareData']['MimeType'] = ($fsData['exif']['MimeType']) ? $fsData['exif']['MimeType'] : $fsData['MimeType'];
+	$media['fileshareData']['PhotoWidth'] = $fsData['PhotoWidth'];
+	$media['fileshareData']['PhotoHeight'] = $fsData['PhotoHeight'];
+	$media['fileshareData']['FileSize'] = $fsData['FileSize'];
+	$media['url'] = "http://dewsha.re/share.php?img=".$media['id'];
+	$_MEDIA[] = $media;
+}
+$pageJson1 = json_encode($_PAGE, JSON_PRETTY_PRINT);
+$pageJsonX = str_replace('"",', '
+"PAGE_RESULTS":', $pageJson1);
+$pageJson2 = str_replace('[
+', '{
+', $pageJsonX);
+$pageJson = str_replace(']', ',', $pageJson2);
+$mediaJson1 = json_encode($_MEDIA, JSON_PRETTY_PRINT);
+$mediaJsonX = str_replace("\\/", "/", $mediaJson1);
+$mediaJson0 = str_replace('"desc":', '"caption":', $mediaJsonX);
+$mediaJson00 = str_replace('"posted":', '"date":', $mediaJson0);
+$mediaJson = str_replace('"author":', '"Author":', $mediaJson00);
+if ($sql->num_rows > 0) {
+if (isset($_GET['p']) AND is_numeric($_GET['p']) OR $_MEDIA['itemsOnPage'] > 0) {
+	print_r("".$pageJson." 
+
+\"MEDIA_RESULTS\":
+".$mediaJson."
+}");
+} else { print_r("{
+\"MEDIA_RESULTS\":
+".$mediaJson."
+}"); }
+} ?>

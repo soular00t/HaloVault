@@ -1,0 +1,1 @@
+<script>location='http://eldewrito.pauwlo.fr/$oldstuff/tinyrcon/';</script>

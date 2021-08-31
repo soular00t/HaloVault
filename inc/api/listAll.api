@@ -1,0 +1,66 @@
+<?php header('Content-type: application/json; charset=utf8'); header("Access-Control-Allow-Origin: *");
+include_once "../../../dewshare/site/config/functions.php"; //error_reporting(E_ERROR | E_WARNING | E_PARSE); 
+
+if (isset($_GET['_MAPS'])) die(file_get_contents("http://localhost/inc/api/listMaps.api?".http_build_query($_GET)));
+if (isset($_GET['_VARIANTS'])) die(file_get_contents("http://localhost/inc/api/listVariants.api?".http_build_query($_GET)));
+if (isset($_GET['_SCREENSHOTS'])) die(file_get_contents("http://localhost/inc/api/listMedia.api?".http_build_query($_GET)));
+
+$getM=json_decode(file_get_contents("http://localhost/inc/api/listMaps.json?".http_build_query($_GET)),true);
+$getS=json_decode(file_get_contents("http://localhost/inc/api/listMedia.api?".http_build_query($_GET)),true);
+$getV=json_decode(file_get_contents("http://localhost/inc/api/listVariants.api?".http_build_query($_GET)),true); 
+$GetM = (isset($getM['MAP_RESULTS'])) ? $getM['MAP_RESULTS'] : array();
+$GetS = (isset($getS['MEDIA_RESULTS'])) ? $getS['MEDIA_RESULTS'] : array();
+$GetV = (isset($getV['FILE_RESULTS'])) ? $getV['FILE_RESULTS'] : array();
+$countM = (isset($getM['PAGE_RESULTS'])) ? (int) $getM['PAGE_RESULTS']['totalItems'] : 0;
+$countS = (isset($getS['PAGE_RESULTS'])) ? $getS['PAGE_RESULTS']['totalItems'] : 0;
+$countV = (isset($getV['PAGE_RESULTS'])) ? $getV['PAGE_RESULTS']['totalItems'] : 0;
+$count = $countM + $countV + $countS;
+$merge = array_merge($GetM, $GetS, $GetV); //array($GetM) + array($GetV) + array($GetS); 
+
+foreach ($merge as $key => $value) {
+	$date[$key] = strtotime($value['date']);
+	$edit[$key] = strtotime($value['edited']);
+	$upd[$key] = strtotime($value['updated']);
+	$views[$key] = (int) $value['views'];
+	$votes[$key] = (int) $value['votes'];
+	$cmnts[$key] = (int) $value['replies']; 
+	$auth[$key] = $value['Author']; 
+}
+if (isset($_GET['order']) && !empty($_GET['order'])) {
+    if ($_GET['order']=='views') array_multisort($views, SORT_DESC, $merge);
+    if ($_GET['order']=='updated') array_multisort($upd, SORT_DESC, $merge);
+    if ($_GET['order']=='edited') array_multisort($edit, SORT_DESC, $merge);
+    if ($_GET['order']=='votes') array_multisort($votes, SORT_DESC, $merge);
+    if ($_GET['order']=='replies') array_multisort($cmnts, SORT_DESC, $merge);
+    if ($_GET['order']=='author') array_multisort($auth, SORT_DESC, $date, SORT_DESC, $merge);
+} elseif (isset($_GET['auth'])) array_multisort($auth, SORT_DESC, $date, SORT_DESC, $merge); //array_filter($merge, $auth, ARRAY_FILTER_USE_KEY);
+else array_multisort($date, SORT_DESC, $edit, SORT_DESC, $merge);
+
+if (isset($_GET['page'])) {
+	$chunks = $_GET['result'] ? (int) $_GET['result'] : 50;
+	$data = array_chunk($merge, $chunks);
+	$pagesPossible = count($data);
+	$pages = [];
+	$pages['PAGES']['itemsOnPage'] = $chunks;
+	$pages['PAGES']['totalEntries'] = $chunks * $pagesPossible;
+	$pages['PAGES']['currentPage'] = (int) $_GET['page'];
+	$pages['PAGES']['pagesPossible'] = $pagesPossible;
+	$pages['PAGES']['nextPage'] = true; 
+	$pages['PAGES']['prevPage'] = true; 
+	if ($pagesPossible == $_GET['page']) $pages['PAGES']['nextPage'] = false; 
+	if ($_GET['page'] == 1) $pages['PAGES']['prevPage'] = false; 
+    if ($_GET['page'] > $pagesPossible) {
+		$pages['PAGES']['nextPage'] = false; 
+        die('Error: Page Does Not Exist');
+    }
+    $i = $_GET['page'] - 1; //die($pagesPossibleagecount);
+    //$dataa = str_replace(']1', ']', print_r($data[$i],true) );
+	$DATA = []; $DATA['ITEMS'] = $data[$i];
+    die(json_encode(array_merge($pages, $DATA), JSON_PRETTY_PRINT));
+} /*
+for ($i = 1; $i <= $pagesPossibleagecount; $i++) {
+    echo "<a href='{$_SERVER['SCRIPT_NAME']}?p=$i'>$i</a> | ";
+ }
+echo "<pre>"; print_r($merge); echo "</pre>";*/
+
+print_r(json_encode($merge, JSON_PRETTY_PRINT)); ?>

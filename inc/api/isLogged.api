@@ -1,0 +1,22 @@
+<?php require_once "../core.php"; 
+if (isset($_SESSION['uname'])) {
+	$sql = $_SQL->query("SELECT `id`,`uname`,`group`,`email`,`slogan`,`site`,`playerid`,`avatar`,`alias`,`theme`,`date`,`last_post`,`last_action`,`sodium` FROM `users` WHERE `id` = '{$_USER['id']}'") or die($_SQL->error);
+	$_LOGGED = $sql->fetch_assoc(); 
+	$_LOGGED['apiKey']=sha1($_LOGGED['sodium']); $_LOGGED['sodium']=null;
+	if (!isImage($_LOGGED['avatar'])) { $_LOGGED['avatar'] = "//halovau.lt/css/images/grunt.png"; }
+	$log = json_encode($_LOGGED, JSON_PRETTY_PRINT);
+	$log=str_ireplace("\\/", "/", $log); $log=str_ireplace('"sodium": null,', '', $log);
+
+	if(array_key_exists('callback', $_GET)){
+		header('Content-Type: text/javascript; charset=utf8');
+		header('Access-Control-Allow-Origin: *');
+		header('Access-Control-Max-Age: 3628800');
+		header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE');
+		$callback = $_GET['callback'];
+		echo $callback.'('.$log.');';
+	} 
+	else {
+		header('Content-type: application/json'); header("Access-Control-Allow-Origin: *");
+		print_r($log);
+	}
+} ?>

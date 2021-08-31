@@ -1,0 +1,55 @@
+
+.members-contentarea table.tablelist tr td{
+  min-height: 20px;
+  vertical-align: middle;
+  padding: 15px 5px;
+}
+
+.members-contentarea table.tablelist tr td:first-child{
+  padding-left: 25px;
+  width: 13%;
+}
+
+.members-contentarea table.tablelist tr td:nth-child(2){
+  width: 15%;
+}
+
+.members-contentarea table.tablelist tr:nth-child(4n){
+  background-color: #f1f1f2;
+}
+
+.members-contentarea table.tablelist tr:nth-child(odd){
+  visibility: hidden;
+}
+
+.members-contentarea table.tablelist tr:nth-child(odd) td{
+  padding: 0;
+  min-height: 0 !important;
+  height: 0 !important;
+}
+
+.members-contentarea table.tablelist tr:first-child{
+  visibility: visible;
+  min-height: 20px;
+  font-weight: 700;
+}
+
+.members-contentarea table.tablelist tr:first-child td:first-child{
+  padding-left: 0;
+  
+}
+
+@media (max-width: 600px){
+
+  .members-contentarea table.tablelist{
+    font-size: 0.875em;
+  }
+
+  .members-contentarea table.tablelist tr td:first-child{
+    display: none;
+  }
+
+  .members-contentarea table.tablelist tr td:nth-child(2){
+    display: none;
+  }
+}

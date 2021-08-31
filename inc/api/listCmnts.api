@@ -1,0 +1,65 @@
+<?php require_once "../core.php"; 
+header('Content-type: application/json; charset=utf8');
+header("Access-Control-Allow-Origin: *");
+error_reporting(E_ALL & ~E_NOTICE);
+if (is_numeric($_GET['forge'])) {
+	$fid = $_GET['forge'];
+	$select = $_SQL->query("SELECT * FROM `notifications` WHERE `forge_id` = '{$fid}' AND type = 'map'") or die ($_SQL->error);
+	$count = $select->num_rows;
+	if ($count < 1) { die(); }
+	while ($cmntGet = $select->fetch_assoc()) {
+		$cUserGet = $_SQL->query("SELECT * FROM users WHERE `id` = '{$cmntGet['from_id']}'");
+		$cmntUser = $cUserGet->fetch_assoc();
+		$cUname = $cmntUser['uname'];
+		$cmnt['commentID'] = $cmntGet['id'];
+		$cmnt['forgeID'] = $cmntGet['forge_id'];
+		$cmnt['userID'] = $cmntGet['from_id'];
+		$cmnt['userName'] = $cUname;
+		$cmnt['cleanCmnt'] = removeBB($cmntGet['comment']);
+		$_CMNT[] = $cmnt;
+	}
+	$mapCmnts = json_encode($_CMNT, JSON_PRETTY_PRINT);
+
+print_r($mapCmnts);
+} 
+if (is_numeric($_GET['topic'])) {
+	$fid = $_GET['topic'];
+	$select = $_SQL->query("SELECT * FROM `notifications` WHERE `com_id` = '{$fid}' AND type = 'com'") or die ($_SQL->error);
+	$count = $select->num_rows;
+	if ($count < 1) { die(); }
+	while ($cmntGet = $select->fetch_assoc()) {
+		$cUserGet = $_SQL->query("SELECT * FROM users WHERE `id` = '{$cmntGet['from_id']}'");
+		$cmntUser = $cUserGet->fetch_assoc();
+		$cUname = $cmntUser['uname'];
+		$cmnt['commentID'] = $cmntGet['id'];
+		$cmnt['forgeID'] = $cmntGet['forge_id'];
+		$cmnt['userID'] = $cmntGet['from_id'];
+		$cmnt['userName'] = $cUname;
+		$cmnt['cleanCmnt'] = removeBB($cmntGet['comment']);
+		$_CMNT[] = $cmnt;
+	}
+	$mapCmnts = json_encode($_CMNT, JSON_PRETTY_PRINT);
+
+print_r($mapCmnts);
+} 
+if (is_numeric($_GET['file'])) {
+	$fid = $_GET['file'];
+	$select = $_SQL->query("SELECT * FROM `notifications` WHERE `mod_id` = '{$fid}' AND type = 'mod'") or die ($_SQL->error);
+	$count = $select->num_rows;
+	if ($count < 1) { die(); }
+	while ($cmntGet = $select->fetch_assoc()) {
+		$cUserGet = $_SQL->query("SELECT * FROM users WHERE `id` = '{$cmntGet['from_id']}'");
+		$cmntUser = $cUserGet->fetch_assoc();
+		$cUname = $cmntUser['uname'];
+		$cmnt['commentID'] = $cmntGet['id'];
+		$cmnt['forgeID'] = $cmntGet['forge_id'];
+		$cmnt['userID'] = $cmntGet['from_id'];
+		$cmnt['userName'] = $cUname;
+		$cmnt['cleanCmnt'] = removeBB($cmntGet['comment']);
+		$_CMNT[] = $cmnt;
+	}
+	$mapCmnts = json_encode($_CMNT, JSON_PRETTY_PRINT);
+
+print_r($mapCmnts);
+}
+?>

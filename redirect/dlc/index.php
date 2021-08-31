@@ -1,0 +1,1 @@
+<?php header("location: http://haloshare.org/files.php?id=26"); ?>

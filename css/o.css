@@ -1,0 +1,683 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'Halo';
+  src: url('fonts/Halo.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.gstatic.com/s/oswald/v11/yg0glPPxXUISnKUejCX4qfesZW2xOQ-xsNqO47m55DA.woff2) format('woff2');
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('fonts/robotoLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'GameFont';
+  src: url('fonts/GameFont.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'wbot';
+  src: url('fonts/wBot.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Neuro';
+  src: url('fonts/neuropol.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Chem';
+  src: url('fonts/chemrea.ttf') format('truetype');
+}
+.uStats {
+	margin:0 auto; margin-top:6px; text-shadow:2px 2px 2px black; background:#333 url(//i.imgur.com/ogTWcqO.png) center center no-repeat; background-size:cover;
+}
+#modInfo {
+	text-align:center;
+	margin-top:-20px;
+	margin-bottom:10px;
+	line-height:30px;
+}
+#modInfo tr td {
+	background: #222;
+	color:silver;
+	border:1px solid black; 
+	padding:6px; 
+	font-size:small;
+}
+.discordBtn {
+	padding:20px;
+	text-height:0px;
+	background-image: url('/css/images/hv discord-orange.png');
+	background-size:100% 100%;
+	background-position:center center;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	border:1px solid black;
+	max-width: 180px;
+	height:30px;
+	margin:0 auto;
+}
+.steamBtn {
+	padding-top:20px;
+	padding-bottom:20px;
+	margin:0 auto;
+	text-height:0px;
+	background-color:#AF7359;
+	border:1px solid black;
+	background-image: url('//steamcommunity-a.akamaihd.net/public/shared/images/header/globalheader_logo.png?');
+	background-size:contain;
+	background-position:center center;
+	background-repeat:no-repeat;
+	max-width: 180px;
+	height:40px;
+	cursor:pointer;
+	font-family:'Halo';
+	font-weight:bold;
+	color:white;
+	text-align:center; 
+	font-size:12px;
+}
+.hecBtn {
+	padding:20px;
+	margin:0 auto;
+	text-height:0px;
+	background-color:#333;
+	border:1px solid black;
+	background-image: url('//hec.haloshare.org/core/img/HCEtrnsparent.png');
+	background-size:contain;
+	background-position:center center;
+	background-repeat:no-repeat;
+	max-width: 180px;
+	height:30px;
+	cursor:pointer;
+	font-family:'Halo';
+	font-weight:bold;
+	color:orange;
+	text-align:top; 
+	font-size:12px;
+}
+.dlMap {
+	background-color:#444;
+	padding:5px;
+	font-size:17px;
+	border:1px dotted orange;
+	font-weight:bold;
+	float:left;
+	text-align:center;
+}
+.banner h1 {
+	font-size: 0px;
+}
+h1 {
+	font-size: 230px;
+}
+.loadMore {
+	float: center;
+	width: 100%;
+	text-align: center;
+	cursor: pointer;
+}
+table.cleanTable {
+	min-width: 100%; 
+}
+table.cleanTable td {
+	padding:3px;
+	text-align: center;
+}
+table.cleanTable tr:nth-child(even) {
+	background: #232323;
+}
+div.forgeList div.row:nth-child(odd) {
+	background: #232323;
+}
+.forgeList .row {
+	display: -webkit-flex; /* Safari */
+    -webkit-align-items: center; /* Safari 7.0+ */
+    display: flex;
+    align-items: center;
+}
+div.modList div.row:nth-child(odd) {
+	background: #232323;
+}
+div.notList div.row:nth-child(odd) {
+	background: #232323;
+}
+
+td.mapList {
+	border:1px solid 0f0f0f; 
+	padding:4px;
+}
+
+td.userList {
+	border: 1px solid 0f0f0f;
+	padding: 2px;
+}
+
+td.modList {
+	border: 1px solid 0f0f0f;
+	padding: 2px;
+}
+
+.modList tr {
+	height: 50px;
+}
+
+.mapInfo {
+	border-bottom: 1px dotted #666;
+	margin-bottom: 30px;
+}
+
+a {
+	text-decoration: none;
+	color: #AF7359;
+}
+
+a:hover {
+	text-decoration: none;
+	color: #F15F07;
+}
+
+div.wrapper {
+	position: relative;
+	width: 97%;
+	min-height: 100%;
+	align: center;
+	float: center:
+	border: 2px solid black;
+	margin: 0 auto;
+	background:rgba(0,0,0, 0.9);
+	box-shadow: 0px 0px 50px #222;
+	-webkit-box-shadow: 0px 0px 50px #222;
+	-moz-box-shadow: 0px 0px 50px #222;
+}
+
+div.inner-wrapper {
+	padding: 20px;
+}
+
+body {
+	padding: 10px;
+	padding-bottom: 20px;
+	font-family: Roboto, sans-serif;
+	background: #333 url(https://staticdelivery.nexusmods.com/contents/Templates/270/bg.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+	color: #B4B4B4;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+	font-size: medium;
+}
+div.footer {
+	float: bottom;
+	display: block;
+	max-width: 100%;
+	padding-left: 15px;
+	padding-right: 15px;
+	color: white;
+	text-align: center;
+	bottom: 0px;
+	margin-top: 30px;
+	background-color: #121212;
+}
+div.comment {
+	background-color: #212121;
+	color: white;	
+	max-width: 90%;
+	box-shadow: 0px 0px 10px #202020;
+	-webkit-box-shadow: 0px 0px 10px #202020;
+	-moz-box-shadow: 0px 0px 10px #202020;
+	margin-bottom: 30px;
+	margin-right: 10px;
+}
+.comment div {
+	max-height: 1000px;
+	overflow: auto !important;
+} 
+h5 {
+	display: block;
+	max-width: 100%;
+	background-color: #71422D;
+	color: #010101;
+	padding: 4px;
+	size: 11pt;
+}
+h5 a { color:black; font-weight:bold; }
+div.sidebar h5 {
+	display: block;
+	background-color: #343434;
+	color: #71422D;
+	font-weight:bold;
+	border-bottom: 0px;
+	display: block;
+	max-width: 90%;
+	text-align:center;
+	margin:0 auto;
+	margin-bottom: 0px;
+	size: 9pt;
+}
+div.bbb {
+	padding:5px;
+	padding-left: 0px;
+}
+div.bbb button {
+	font-size: small;
+	text-align: center;
+	background-color: #767676;
+	border: 1px solid black;
+	line-height: 20px;
+}
+
+div.banner {
+	width: inherit;
+	color: black;
+	text-align: center;
+	font-family: 'Halo', sans-serif;
+	background: url('//media.discordapp.net/attachments/242170775921098753/364051387643854858/hvtemp.png?width=1442&height=219') no-repeat center #000;
+	background-size: cover;
+	min-width: 100%;
+	height: 200px;
+}
+
+div.nav {
+	text-decoration: bold;
+	font-family: 'Neuro', sans-serif;
+	font-size: large;
+	text-align: center;
+	max-width: 100%;
+	line-height: 60px;
+	background-color: #121212;
+	text-align: center;
+	z-index:100;
+
+}
+div.navButton {
+	text-align:center; 
+	width: 20%;
+	text-decoration: bold;
+	align: center;
+	float: left;
+	margin: 0 auto;
+	min-height: 100%;
+	color: white;
+}
+div.navButton:hover {
+	background-color: #000000;
+	color: #F15F07;
+}
+
+div.sidebar {
+	margin-bottom: 34px;
+	margin-top: 34px;
+	align: left;
+	float: right;
+	border: 1px solid black;
+	max-width: 25%;
+	color: white;
+	background-color: #1C1919;
+	padding-bottom: 40px;
+	padding: 17px;
+}
+div.sidebar h4 {
+	font-family: 'Neuro','Chem', sans-serif;
+	background: black;
+	max-width: 100%;
+	padding: 5px;
+	text-align: center;
+	font-weight: bold;
+	color: #C45522;
+	font-size: medium;
+	border-top:1px solid #C45522;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 1px dashed #C45522;
+}
+.sidebar h4 a {
+	color: #C45522;
+} 
+.fixed { 
+	position:fixed; 
+	text-align:center; 
+	width:100%; 
+	line-height:40px; 
+	max-width:97%; 
+	z-index:100!important; 
+	top:0px; 
+	left:0px; 
+	right:0px;
+	-webkit-box-shadow: 0 4px 4px -2px #71422D;
+	-moz-box-shadow: 0 4px 4px -2px #71422D;
+    box-shadow: 0 4px 4px -2px #71422D;	
+}
+div.innerSidebar {
+	border: 1px solid #F15F07;
+	border-top: 0px;
+	float: top;
+	background-color: #121212;
+	max-width: 100%;
+	margin-top: -22px;
+	margin-bottom: 40px;
+	box-shadow: 0px 0px 5px #000000;
+}
+form#login div input:-webkit-autofill {
+	background-color: grey;
+}
+input[type="text"], input[type="button"], input[type="password"], input[type="submit"] {
+    -webkit-box-shadow: 0 0 0px 1000px grey inset;
+	background-color: grey;
+	border: 1px solid black;
+	line-height: 17px;
+	-webkit-text-fill-color: #343434;
+	color: black;
+	max-width: 75%;
+}
+input[type="text"], input[type="button"], input[type="password"], input[type="submit"], select, button, textarea {
+	border-top-left-radius:6px;
+	border-bottom-right-radius:6px;
+	display:inline-flex;
+	align-items:center;
+}
+textarea {
+	background-color: grey;
+	border: 1px solid black;
+	display: block;
+	width: 100%;
+	-webkit-text-fill-color: #343434;
+	color: black;
+}
+select {
+	background-color: grey;
+	border: 1px solid black;
+	-webkit-text-fill-color: #343434;
+	color: black;
+}
+option {
+	background-color: grey;
+	border: 1px solid black;
+	-webkit-text-fill-color: #343434;
+	color: black;
+}
+button {
+	background-color: grey !important;
+	color: black !important;
+	-webkit-text-fill-color: black;
+}
+.recent {
+	border:1px solid #323232;
+	width:90%;
+	margin:0 auto;
+}
+table {
+	max-width: 100% !important; 
+}
+table.recent tr td {
+	padding: 3px;
+}
+table.recent tr:nth-child(odd) {
+	background-color: #232323;
+}
+
+
+div.content {
+	float: left;
+	padding: 10px;
+	max-width: 72%;
+	display: block;
+	color: white;
+	min-width: 72%;
+	font-size:125%;
+}
+.content h2 {
+	  font-family: 'Neuro', sans-serif;
+	  font-size: 52px;
+	  color: #F15F07;
+	  font-weight:bold;
+	  border-bottom: 1px solid #F15F07;
+	  display: block;
+	  max-width: 100%;
+}
+.contentHeader {
+	  font-family: 'Neuro', sans-serif;
+	  font-size: 52px;
+	  color: #F15F07;
+	  border-bottom: 1px solid #F15F07;
+	  display: block;
+	  max-width: 100%;
+	  margin-bottom: 20px;
+}
+h3 {
+	  font-family: 'Neuro', 'Chem', 'Halo', sans-serif;
+	  font-size: x-large;
+	  color: #F15F07;
+	  border:1px solid #F15F07;
+	  width: 100%;
+	  max-width: 100%;
+	  display: block;
+	  padding: 6px;
+	  background-color: #010101;
+}
+
+h3 div {
+	text-decoration: none;
+	float: right;
+	font-size: medium;
+}
+.contentTitle {
+	  font-family: 'HaloOutline', sans-serif;
+	  font-size: x-large;
+	  color: #F15F07;
+	  width: 100%;
+	  max-width: 100%;
+	  display: block;
+	  padding: 6px;
+	  background-color: #303030;
+}
+h4 {
+	  font-family: 'Neuro', 'Halo', sans-serif;
+	  font-size: large;
+	  color: #A34D27;
+	  width: 100%;
+	  border: 1px solid #F15F07;
+	  max-width: 100%;
+	  display: block;
+	  padding: 6px;
+	  padding-bottom:8px;
+	  background-color: #000;
+}
+div#modResults {
+	display: block;
+}
+div#mapResults {
+		display: block;
+}
+div#irc {
+	display: none;
+}
+div.irc {
+	display: none;
+}
+.content div.contentHolder {
+	display: block;
+	border-top: 1px dashed #F15F07;
+	border-bottom: 1px solid #F15F07;
+	border-left: 1px solid #F15F07;
+	border-right: 1px solid #F15F07;
+	padding: 16px;
+	padding-top: 20px;
+	font-family:Arial;
+	margin-top: -14px;
+	min-width: 100%;
+	background: #151515;
+	box-shadow: 0px 0px 30px #1B1201;
+	-webkit-box-shadow: 0px 0px 30px #1B1201;
+	-moz-box-shadow: 0px 0px 30px #1B1201;
+	overflow: hidden;
+}
+.contentHolder div.modContent {
+	min-height: 400px;
+}
+.contentHolder div.modContent {
+	min-height: 500px;
+}
+blockquote{
+  display:block;
+  background: #F0F0F0;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  max-width: 80%;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #666;
+  text-align: justify;
+  border-left: 15px solid black;
+  border-right: 2px solid #black;
+  -moz-box-shadow: 0px 0px 15px #333;
+  -webkit-box-shadow: 0px 0px 15px #333;
+  box-shadow: 0px 0px 15px #333;
+}
+
+blockquote::before{
+  content: "\201C"; /*Unicode for Left Double Quote*/
+  font-family: Georgia, serif;
+  font-size: 60px;
+  font-weight: bold;
+  color: #999;
+  position: absolute;
+  left: 10px;
+  top:5px;
+}
+
+blockquote::after{
+content: "";
+}
+
+blockquote a{
+  text-decoration: none;
+  background: #eee;
+  cursor: pointer;
+  padding: 0 3px;
+  color: #c76c0c;
+}
+
+blockquote a:hover{
+ color: #666;
+}
+
+blockquote em{
+  font-style: italic;
+}
+a.rLink {
+	color:white;
+}
+.mapimg blockquote{
+  display:block;
+  background: black;
+  opacity: 0.4 !important;
+  padding: 20px;
+  margin: 0;
+  position: relative;
+  max-width: 100%;
+  font-family: Georgia, serif;
+  font-size: 12px;
+  line-height: 1.2;
+  float:right;
+  color: #f0f0f0;
+  text-align: justify;
+  -moz-box-shadow: 0px 0px 3px #333;
+  -webkit-box-shadow: 0px 0px 3px #333;
+  box-shadow: 0px 0px 3px #333;
+}
+
+.mapimg blockquote::before{
+  content: "\201C"; /*Unicode for Left Double Quote*/
+  font-family: Georgia, serif;
+  font-size: 30px;
+  color: #999;
+  position: absolute;
+  left: 5px;
+  top:5px;
+}
+
+.mapimg blockquote::after{
+  content: "\201D";
+  font-family: Georgia, serif;
+  font-size: 42px;
+  color: #999;
+  position: absolute;
+  right: 5px;
+  bottom:-22px;
+}
+
+.mapimg blockquote a{
+  text-decoration: none;
+  background: #eee;
+  cursor: pointer;
+  padding: 0 3px;
+  color: #c76c0c;
+}
+
+.mapimg blockquote hover{
+ color: #666;
+}
+
+.mapimg blockquote em{
+  font-style: italic;
+}
+code {
+  display:block;
+  background: #222;
+  padding: 15px 20px 15px 45px;
+  margin: 0 0 20px;
+  position: relative;
+  max-width: 80%;
+  font-family: Comic Sans, serif;
+  font-size: 12px;
+  line-height: 1.2;
+  color: white;
+  background: url('images/darkCode.jpg');
+  text-align: justify;
+  border-left: 15px solid black;
+  border-right: 2px solid #black;
+  -moz-box-shadow: 0px 0px 15px #333;
+  -webkit-box-shadow: 0px 0px 15px #333;
+  box-shadow: 0px 0px 15px #333;
+}
+
+code::before{
+  content: "";
+  font-family: Georgia, serif;
+  font-size: 40px;
+  font-weight: bold;
+  color: white;
+  position: absolute;
+  left: 10px;
+  top:5px;
+}
+ code em{
+  font-style: italic;
+}
+code a {
+	color:white!important;
+}code a:hover {
+	color:orange!important;
+}
+.footlinks {  
+	display:inline-flex;
+	align-items:center;
+	min-width:60px;
+	background-color:#434343;
+	color:black;
+	max-height:20px;
+	padding:4px;
+	border:1px solid black;
+}
+.footlinks:hover {
+	background:#232323;
+}
+img.reddit, img.anvil {
+	filter:invert(100%);
+}

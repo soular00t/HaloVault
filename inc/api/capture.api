@@ -1,0 +1,15 @@
+<?php include "../core.php"; $check=file_get_contents('php://input');
+if (!empty($check)) {
+	$statData = json_encode(json_decode($check))."\n";
+	$in = json_decode($statData);
+	$name = htmlspecialchars($_SQL->real_escape_string($in->name));
+	$map = htmlspecialchars($_SQL->real_escape_string($in->map));
+	$gtype = htmlspecialchars($_SQL->real_escape_string($in->variantType));
+	$variant = htmlspecialchars($_SQL->real_escape_string($in->variant));
+	$bmap = htmlspecialchars($_SQL->real_escape_string($in->mapFile));
+	$teams = htmlspecialchars($_SQL->real_escape_string($in->teamMode));
+	$_SQL->query("INSERT INTO game_stats (name,data,map,variant,base_map,gametype,team_mode) VALUES 
+	 ('{$name}','".$_SQL->real_escape_string($statData)."','{$map}','{$variant}','{$bmap}','{$gtype}','{$teams}')") 
+	 or die($_SQL->error);
+} 
+else  echo "Nothing submitted."; ?>

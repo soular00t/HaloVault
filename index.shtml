@@ -1,0 +1,28 @@
+<html><head><title>HaloVault - Build, Browse, Share</title></head>
+<style>
+body {background:#222; color:red;}
+.steamBtn {
+	padding-top:20px;
+	padding-bottom:20px;
+	margin:0 auto;
+	text-height:0px;
+	background-color:#200003;
+	border:1px solid black;
+	background-image: url('//steamcommunity-a.akamaihd.net/public/shared/images/header/globalheader_logo.png?');
+	background-size:contain;
+	background-position:center center;
+	background-repeat:no-repeat;
+	width: 200px;
+	max-height: 40px;
+	cursor:pointer;
+	font-family:'Halo';
+	font-weight:bold;
+	color:white;
+	text-align:center; 
+	font-size:12px;
+}</style>
+	<body>
+		<center><img src="http://media.diehardgamefan.com/wp-content/uploads/2009/09/ODST-3.jpg" width="100%" />
+		</center>
+	</body>
+</html>

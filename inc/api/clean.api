@@ -1,0 +1,54 @@
+<?php require_once "../core.php"; include_once "../header.php";
+echo "<div class='content'><div class='contentHeader' style='cursor:pointer;' onclick=\"location='/r00t';\">Administration</div>
+<h3>FileShare Cleanup</h3><div id='contentHolder' class='contentHolder'><pre style='background:rgba(0,0,0,0.6); font-size:small;'>";
+$t='<i>All files within this directory correspond to the database entries. Nothing to delete</i>';
+if (isset($_GET['screenshots'])) {
+    $Path='../../../FILESHARE/enc/screenshots/*'; 
+    $files = glob($Path);
+    foreach($files as $file) {
+        $thefile = base64_encode(str_replace('../../','',$file));
+        $sql = $_SQL->query("SELECT url FROM media WHERE type='s' AND url='{$thefile}' LIMIT 1") or die($_SQL->error);
+        if($sql->num_rows < 1) {
+        if (isset($_USER) && $_USER['group'] > 2) $t="\n\n\t\t<input type='button' onclick=\"location='?screenshots&themastervault';\" value='Clean Directory' />";
+            if (isset($_GET['themastervault'])) {
+                unlink($file); 
+                echo "<span style='color:red;'>DELETED: <b>{$file}</b>, since path not in database</span>\n";
+            } else echo "<span style='color:orange;'>NOT FOUND: <b>{$file}</b>, should be deleted</span>\n";
+        }
+        else echo "<span style='color:green;'>LOCATED: <b>{$file}</b>, should not be deleted.</span>\n";
+    }
+} 
+elseif (isset($_GET['maps'])) {
+    $Path='../../../FILESHARE/enc/maps/*'; 
+    $files = glob($Path);
+    foreach($files as $file) {
+        $thefile = base64_encode(str_replace('../../','',$file));
+        $sql = $_SQL->query("SELECT directURL FROM maps WHERE directURL='{$thefile}' LIMIT 1") or die($_SQL->error);
+        if($sql->num_rows < 1) {
+        if (isset($_USER) && $_USER['group'] > 2) $t="\n\n\t\t<input type='button' onclick=\"location='?maps&themastervault';\" value='Clean Directory' />";
+            if (isset($_GET['themastervault'])) {
+                unlink($file); 
+                echo "<span style='color:red;'>DELETED: <b>{$file}</b>, since path not in database</span>\n";
+            } else echo "<span style='color:orange;'>NOT FOUND: <b>{$file}</b>, should be deleted</span>\n";
+        }
+        else echo "<span style='color:green;'>LOCATED: <b>{$file}</b>, should not be deleted.</span>\n";
+    }
+} 
+elseif (isset($_GET['variants'])) {
+    $Path='../../../FILESHARE/enc/variants/*'; 
+    $files = glob($Path);
+    foreach($files as $file) {
+        $thefile = base64_encode(str_replace('../../','',$file));
+        $sql = $_SQL->query("SELECT directURL FROM files WHERE type='variant' AND directURL='{$thefile}' LIMIT 1") or die($_SQL->error);
+        if($sql->num_rows < 1) {
+        if (isset($_USER) && $_USER['group'] > 2) $t="\n\n\t\t<input type='button' onclick=\"location='?variants&themastervault';\" value='Clean Directory' />";
+            if (isset($_GET['themastervault'])) {
+                unlink($file); 
+                echo "<span style='color:red;'>DELETED: <b>{$file}</b>, since path not in database</span>\n";
+            } else echo "<span style='color:orange;'>NOT FOUND: <b>{$file}</b>, should be deleted</span>\n";
+        }
+        else echo "<span style='color:green;'>LOCATED: <b>{$file}</b>, should not be deleted.</span>\n";
+    }
+} 
+print "</pre>".$t."</div>";
+include_once "../footer.php"; ?>

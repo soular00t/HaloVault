@@ -1,0 +1,58 @@
+<?php header('Content-type: application/json; charset=utf8'); header("Access-Control-Allow-Origin: *");
+$get = "http://localhost/inc/api/listFiles.api?type=variant&".http_build_query($_GET);
+print file_get_contents($get); /*
+$variantPath='../../../FILESHARE/content/variants/'; $variants=[];
+$PAGE['results'] = $_GET['r'] ? (int) $_GET['r'] : '';
+$PAGE['currentPage'] = (int)$_GET['page'];
+if(!($page>0)) $PAGE['currentPage'] = 1;
+$PAGE['totalVariants'] = ($page-1)*$PAGE['results'];
+$_PAGE[] = $PAGE;
+foreach($iter = new RecursiveIteratorIterator( new RecursiveDirectoryIterator($variantPath)) as $fileInfo) {
+    if ($fileInfo->isDir()) continue;
+    $file = fopen($fileInfo->getPathname(), "rb");
+    $_PAGE['totalVariants'] = sizeof($file);
+    $_PAGE['pagesPossible'] = ceil($_PAGE['totalVariants']/$_PAGE['results']);
+    $file = array_slice($file, $_PAGE['totalVariants'], $_PAGE['results']);
+    //die(var_dump($files));
+    if ($file) { 
+        fseek($file, 0x48, SEEK_SET);     $varName = fread($file,  32);
+        fseek($file, 0x64, SEEK_SET);     $varDesc = fread($file,  128);
+        fseek($file, 0x0e0, SEEK_SET);    $varAuth = fread($file,  32);
+        fseek($file, 0x124, SEEK_SET);    $varType = fread($file,  1);
+        fseek($file, 0x2f4, SEEK_SET);    $varDmgRes = fread($file,  1);
+        fseek($file, 0x2f8, SEEK_SET);    $varShieldx = fread($file,  1);
+        fseek($file, 0x300, SEEK_SET);    $varDmgDeal = fread($file,  1);
+        fseek($file, 0x303, SEEK_SET);    $varWeapSwap = fread($file,  1);
+        fseek($file, 0x304, SEEK_SET);    $varPlaySpeed = fread($file,  1);
+        fseek($file, 0x2a6, SEEK_SET);    $var1stWeap = fread($file,  1);
+        fseek($file, 0x2a7, SEEK_SET);    $var2ndWeap = fread($file,  1);
+        fseek($file, 0x218, SEEK_SET);    $createDate = fread($file,  32);
+        fclose($file); 
+        $desc = trim(utf8_encode($varDesc));
+        $time = trim(substr($desc, strpos($desc, ", ") + 1));
+        $var = array(
+            'Name' => utf8_encode($varName),
+            'GameType' => getGameType(bin2hex($varType)),
+            'Description' => trim(str_ireplace(", ".$time, '', $desc)),
+            'Author' => trim(utf8_encode($varAuth), "\x00..\x1F"),
+            'GameImage' => "http://haloshare.org/css/images/variants/undefined.png",
+            'WeapPickup' => getWeapPick(bin2hex($varWeapSwap)),
+            'DmgDealer' => getDmgDeal(bin2hex($varDmgDeal)),
+            'DmgResistance' => getDmgResist(bin2hex($varDmgRes)),
+            'ShieldMulti' => getShieldMulti(bin2hex($varShieldx)),
+            'PlayerSpeed' => getPlayerSpeed(bin2hex($varPlaySpeed)),
+            'PrimeWeapon' => getWeap(bin2hex($var1stWeap)),
+            'SecondWeapon' => getWeap(bin2hex($var2ndWeap)),
+            'CreationDate' => date("D M d, Y G:i:s", strtotime($time)), //int_helper::uInt32($createDate));
+            'ModifiedDate' => date("D M d, Y G:i:s", filemtime($fileInfo->getPathname())),
+            'FileSize' => byteSize(filesize($fileInfo->getPathname())),
+            'FileExtension' => getVarExt(bin2hex($varType)),
+            'DownloadURL' => "http://dewsha.re/share.php?variant=".utf8_encode($varName)
+        );
+        $variant['GameImage'] = "http://haloshare.org/css/images/variants/".strtolower($var['GameType']).".png";
+        $variants[] = $var;
+        if (isset($_GET['insert'])) $_SQL->query("INSERT INTO variants () 
+            VALUES () or die($_SQL->error)");
+    } else echo "couldnt do it man im sorry =/ <br />";
+}
+print(str_ireplace('\\u0000', "", json_encode($variants, JSON_PRETTY_PRINT))); */

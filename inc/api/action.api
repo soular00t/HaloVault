@@ -1,0 +1,119 @@
+<?php include_once "../core.php"; 
+// FORGE ACTIONS
+if (isset($_GET['forge'])) { 
+	if (isset($_GET['id']) && is_numeric($_GET['id'])) {
+		$mapid = $_GET['id'];
+		$grabMap = $_SQL->query("SELECT * FROM maps WHERE id = '".$mapid."'");
+		$MAP = $grabMap->fetch_assoc();
+		$mCnt = $grabMap->num_rows;
+		if ($mCnt < 1) { die("<script>alert('Sorry, the content you requested does not exist yet.'); location.href='/forge.php';</script>"); }
+		$getUser = $_SQL->query("SELECT * FROM users WHERE id = '".$MAP['uid']."'");
+		$getUsr = $getUser->fetch_assoc();
+		$MAPuser = $getUsr['uname'];
+		$mapName = preg_replace('/[^ \w0-9a-zA-Z_-]/', '', $MAP['map']);
+		$mapNameL = strtolower($mapName);
+		/* Count Views */
+		$loggedU = '0';
+		if (isset($_USER['id'])) { $loggedU = $_USER['id']; }
+		$grabViews = $_SQL->query("SELECT * FROM views WHERE map_id = '{$mapid}' AND (user = '{$loggedU}' OR ip='{$_SERVER['REMOTE_ADDR']}')");
+		if (!isset($_USER['id'])) { 
+			$grabViews = $_SQL->query("SELECT * FROM views WHERE map_id = '{$mapid}' AND ip = '{$_SERVER['REMOTE_ADDR']}'"); 
+			$grabDLs = $_SQL->query("SELECT * FROM downloads WHERE map_id = '{$mapid}' AND ip = '{$_SERVER['REMOTE_ADDR']}'");
+		} 
+		$now = time();
+
+		$VIEW = $grabViews->fetch_assoc();
+		$uVcount = $grabViews->num_rows;
+		$Vth3n = $VIEW['last_viewed'];
+		$Vthen = strtotime($Vth3n);
+		$Vdifference = $now - $Vthen;
+		if($Vdifference > 21600 AND $uVcount < 1 AND $_USER['id'] != $MAP['uid']) { 
+			$_SQL->query("INSERT INTO views (map_id, user, ip, last_viewed) VALUES ('{$_GET['id']}', '{$loggedU}', '{$_SERVER['REMOTE_ADDR']}', CURRENT_TIMESTAMP)"); 
+		}
+		$totalViewsSQL = $_SQL->query("SELECT * FROM views WHERE map_id = '{$_GET['id']}'");
+		$totalViews = $totalViewsSQL->num_rows;
+	}
+	if (isset($_POST['postcmnt']) && !empty($_POST['cmnt'])) {
+		$checkCmtSpam = $_SQL->query("SELECT id FROM notifications where from_id = '{$_USER['id']}' AND (type = 'map' OR type = 'mod' OR type= 'com') AND `date` > date_sub(CURRENT_TIMESTAMP, INTERVAL 8 MINUTE)")->num_rows;
+		if ($checkCmtSpam < 4) {
+			$cmntBody = $_SQL->real_escape_string(htmlentities($_POST['cmnt']));
+			preg_match_all("/@[a-zA-Z0-9._-]+/", $cmntBody, $username_matches);
+			$username_matches = $username_matches[0];
+			$_SQL->query("INSERT INTO notifications (`date`, comment, to_id, from_id, type, forge_id, mod_id) VALUES (CURRENT_TIMESTAMP, '".$cmntBody."', '".$MAP['uid']."', '".$_USER['id']."', 'map', '".$_GET['id']."', '0')") or die($_SQL->error);
+			$grabcID = $_SQL->query("SELECT * FROM notifications WHERE type = 'map' AND forge_id = '{$_GET['id']}' ORDER BY id DESC LIMIT 1");
+			$c = $grabcID->fetch_assoc();
+			$cID = $c['id'];
+			if (!empty($username_matches)) {
+				foreach($username_matches as $ut) {
+					$ut = trim(str_replace('@', '', $ut));
+					$user_id = $_SQL->query("SELECT `id` FROM users where uname='{$ut}'")->fetch_object()->id;
+					if (!empty($user_id) && $user_id != $getUsr['id']) { $_SQL->query("INSERT INTO notifications (to_id, from_id, forge_id, mod_id, type, comment, `date`) values ('{$user_id}', '{$_USER['id']}', '{$MAP['id']}', '0', 'tag', '{$cID}', CURRENT_TIMESTAMP)"); }
+				}
+			}
+			$commentAmnt = $cmntCount + 1;
+			$_SQL->query("UPDATE maps SET replies = '{$commentAmnt}' WHERE id = '{$_GET['id']}'");
+			if ($_USER['id'] != $MAP['uid']) { echo "<script>alert(\"Response posted. ".$MAPuser." has been informed of your response. If any users have been tagged, they have also been notified.\");</script>"; }
+			if ($_USER['id'] == $MAP['uid']) { echo "<script>alert(\"Response posted. If any users have been tagged, they have been notified.\");</script>"; }
+			echo "<META HTTP-EQUIV=\"Refresh\" Content=\"0;\" />";
+		} else { echo "<script>alert('Spam Filter Activated! Try again in a little while.');</script>"; }
+	} if (isset($_POST['postcmnt']) && empty($_POST['cmnt'])) { 
+		echo "<script>alert('It seems you have left the comment field blank. Try Again!');</script>";
+	} echo "</div>";
+	/* Forge Voting System */
+	if (isset($_GET['upvote']) && isset($_USER['id'])) { 
+		$checkifVoted = $_SQL->query("SELECT * FROM notifications WHERE forge_id = '".$mapid."' AND type = 'vote' AND from_id = '".$_USER['id']."'") or die($_SQL->error);
+		$voteCount = $checkifVoted->num_rows;
+		$getAllVotes = $_SQL->query("SELECT * FROM notifications WHERE forge_id = '".$mapid."' AND type = 'vote'") or die($_SQL->error);
+		$totalVotes1 = $getAllVotes->num_rows;
+		$totalVotes = "+".$totalVotes1."";	
+		if ($_USER['id'] != $MAP['uid']) {
+			if ($voteCount > 0 && $_USER['id'] != $MAP['uid']) { 	
+				echo "<script>alert(\"You can only vote once!\");</script>"; 
+				echo "<meta http-equiv='refresh' content='0;/forge.php?id=".$MAP['id']."' /> ";
+			} else {
+				$IntotalVotes = $totalVotes + 1;
+				$_SQL->query("UPDATE maps set votes='".$IntotalVotes."' WHERE `id` ='".$_GET['id']."'") or die($_SQL->error);
+				$_SQL->query("INSERT INTO notifications (from_id, to_id, comment, type, forge_id, mod_id, `date`) VALUES ('".$_USER['id']."', '".$MAP['uid']."', '+1', 'vote', '".$MAP['id']."', '0', CURRENT_TIMESTAMP)") or die($_SQL->error);
+				echo "<script>alert(\"You've upvoted ".$MAP['title'].". +1 point.\");</script>"; 
+				echo "<meta http-equiv='refresh' content='0;/forge.php?id=".$MAP['id']."' /> ";
+			}
+		} else { 
+			echo "<script>alert(\"You can't vote on your own content!\");</script>"; 
+			echo "<meta http-equiv='refresh' content='0;/forge.php?id=".$MAP['id']."' /> ";
+		}
+	} elseif (isset($_GET['upvote']) && !isset($_USER['id'])) {
+		echo "<script>alert(\"You must login or register to vote on content!\");</script>"; 
+		echo "<meta http-equiv='refresh' content='0;/forge.php?id=".$MAP['id']."' /> ";
+	} /* Download Map */
+	if (isset($_GET['dl'])) {
+		if (isset($_USER['id'])) {
+			$grabDLs = $_SQL->query("SELECT * FROM downloads WHERE map_id = '{$mapid}' AND (user = '{$loggedU}' OR ip='{$_SERVER['REMOTE_ADDR']}')") or die($_SQL->error);
+			$DL = $grabDLs->fetch_assoc();
+			$uDcount = $grabDLs->num_rows;
+			$Dth3n = $DL['last_viewed'];
+			$Dthen = strtotime($Dth3n);
+			$Ddifference = $now - $Dthen;
+			if($Ddifference > 43200 AND $uDcount < 1 AND $_USER['id'] != $MAP['uid']) { 
+				$_SQL->query("INSERT INTO downloads (map_id, user, ip, last_viewed) VALUES ('{$_GET['id']}', '{$loggedU}', '{$_SERVER['REMOTE_ADDR']}', CURRENT_TIMESTAMP)"); 
+			}
+			$totalDLSQL = $_SQL->query("SELECT * FROM downloads WHERE map_id = '{$_GET['id']}'");
+			$totalDLs = $totalDLSQL->num_rows;
+			$totalDownloads = $totalDLs;
+			$url = $MAP['url'];
+			if ($MAP['public'] == 'n' OR $MAP['public'] == 'r' && $_USER['group'] < 2 && $_USER['id'] != $MAP['uid']) {  
+				$welcomeMSG1 = "<div class='comment'><h5>Download link requested from <a href='/users.php?id=".$_USER['id']."'>".$_USER['name']."</a></h5>\n<div class='row'><div class='col-md-2' style='text-align:center;'><img src=\"".$_USER['img']."\" width='60' /></div><div class='col-md-10' style='padding-right:20px;'><b>Automated message from <a href='users.php?id=11'>vaultBot</a></b>\n<code>The user <u>".$_USER['name']."</u> is requesting to download the file: <a href='/forge.php?id=".$MAP['id']."'>".$MAP['title']."</a></code></div></div>\n<div style='font-size:xx-small; float:right; text-align:right; min-width:100px; margin-right:7px;'>".dateConvert2(date('Y-m-d G:i:s'))."</div><br /></div>";
+				$welcomeMSG = $_SQL->real_escape_string($welcomeMSG1);
+				$_SQL->query("INSERT INTO notifications (from_id, to_id, comment, type) VALUES ('".$_USER['id']."', '".$MAP['uid']."', '".$welcomeMSG."', 'msg')") or die($_SQL->error);
+				echo "<script>alert(\"This file is restricted for download by the submitter. Download URL has been requested & ".$MAPuser." notified! This member will reply to you personally.\"); close();</script>";
+			} elseif ($MAP['public'] == 'y' && $_USER['id'] == 4) {
+				$_SQL->query("INSERT INTO downloads (map_id, user, ip, last_viewed) VALUES ('{$_GET['id']}', '{$loggedU}', '{$_SERVER['REMOTE_ADDR']}', CURRENT_TIMESTAMP)"); 
+				$_SQL->query("UPDATE maps set downloads='".$totalDownloads."' WHERE id = '".$_GET['id']."'") or die($_SQL->error);
+				die("<script type='text/javascript'>close_window();</script>Download tracked! This page should not be seen, but rather processed through the backend of FMM");
+			}
+			else {
+				$_SQL->query("UPDATE maps set downloads='".$totalDownloads."' WHERE id = '".$_GET['id']."'") or die($_SQL->error);
+				die("<h1 style='zIndex:100;'>Please Wait while we fetch your download.</h1><script>window.location.replace('".$MAP['url']."');</script>");
+			}
+		} else { echo "<script>alert(\"You must login or register to download this content.\"); window.location.replace('/forge.php?id=".$MAP['id']."');</script>"; }
+	}
+} ?>

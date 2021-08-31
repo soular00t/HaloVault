@@ -1,0 +1,14 @@
+<?php include_once "../core.php";
+if (isset($_GET['email'])) {
+	header('Content-type: application/json; charset=utf8');
+	header("Access-Control-Allow-Origin: *");
+	$email = $_GET['email'];
+    $request = "https://apilayer.net/api/check?access_key=1a55424588eed8d06217785fd98e688b&email=".$email;
+    $return = file_get_contents($request);
+	print_r($return);
+} elseif (isset($_GET['check'])) {
+	$email = $_GET['check'];
+	if (isEmail($email)) {echo "email valid";}
+	else {echo "email invalid";}
+}
+?>

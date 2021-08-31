@@ -1,0 +1,15 @@
+<?php require_once "../core.php"; 
+//header('Content-type: application/json; charset=utf8');
+//header("Access-Control-Allow-Origin: *");
+$serve = "http://halostats.click/privateapi/getServers";
+$servers = get_url($serve);
+$list = json_decode($servers, true);
+var_dump($list);
+$totalServers = count($list);
+$totalPlayers = count($list['players']);
+//foreach ($list['players'] as $p){
+  //  $totalPlayers = $p++;
+//}
+echo "Total Servers: ".$totalServers."<br />
+Total Players: ".$totalPlayers.""
+?>
